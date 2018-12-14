@@ -1,0 +1,56 @@
+﻿@using ninja.Models
+@model List<BusquedaInvoice>
+
+@{
+
+
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1> Lista de Facturas </h1>
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Actions</th>
+             
+
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (BusquedaInvoice item in Model) {
+
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Type</td>
+            <td>
+                @Html.ActionLink("Detail", "Detail", new { id = item.Id }, new { @class = "buttonx" })
+                
+                
+            </td>
+
+        </tr>
+
+
+            }
+    </tbody>
+</table>
+
+
+
+ 
+
+
+
+@{
+  
+
+
+}
+

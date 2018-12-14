@@ -19,7 +19,9 @@ namespace ninja.test {
             long id = 1006;
             Invoice invoice = new Invoice() {
                 Id = id,
-                Type = Invoice.Types.A.ToString()
+                Type = Invoice.Types.A.ToString(),
+                
+                 
             };
 
             manager.Insert(invoice);
@@ -44,7 +46,8 @@ namespace ninja.test {
                 InvoiceId = id,
                 Description = "Venta insumos varios",
                 Amount = 14,
-                UnitPrice = 4.33
+                UnitPrice = 4.33 
+   
             });
 
             invoice.AddDetail(new InvoiceDetail() {
@@ -59,12 +62,14 @@ namespace ninja.test {
             Invoice result = manager.GetById(id);
 
             Assert.AreEqual(invoice, result);
+            
 
         }
 
         [TestMethod]
         public void DeleteInvoice() {
 
+             
             /*
               1- Eliminar la factura con id=4
               2- Comprobar de que la factura con id=4 ya no exista
@@ -72,8 +77,28 @@ namespace ninja.test {
             */
 
             #region Escribir el código dentro de este bloque
+            InvoiceManager manager = new InvoiceManager();
+            long id = 4;
+          
+            
+                manager.Delete(id);
+                Assert.IsFalse(manager.Exists(id));
+             
+            
+            
+                 
 
-            throw new NotImplementedException();
+                    
+                
+            
+            
+           
+                 
+            
+
+
+
+            
 
             #endregion Escribir el código dentro de este bloque
 
@@ -104,22 +129,22 @@ namespace ninja.test {
 
             manager.UpdateDetail(id, detail);
             Invoice result = manager.GetById(id);
-
-            Assert.AreEqual(2, result.GetDetail().Count());
+            IList<InvoiceDetail> detail2 = result.GetDetail();
+            Assert.AreEqual(detail2.Count(), detail.Count());
 
         }
 
         [TestMethod]
         public void CalculateInvoiceTotalPriceWithTaxes() {
 
-            long id = 1005;
+            long id = 1004;
             InvoiceManager manager = new InvoiceManager();
             Invoice invoice = manager.GetById(id);
 
             double sum = 0;
             foreach(InvoiceDetail item in invoice.GetDetail()) 
-                sum += item.TotalPrice * item.Taxes;
-
+                sum +=   item.TotalPriceWithTaxes ;
+             double sum2 = invoice.CalculateInvoiceTotalPriceWithTaxes();
             Assert.AreEqual(sum, invoice.CalculateInvoiceTotalPriceWithTaxes());
 
         }

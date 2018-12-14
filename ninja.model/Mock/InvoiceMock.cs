@@ -39,41 +39,56 @@ namespace ninja.model.Mock {
 
         private void Init() {
 
+
+
+
             this._db.Add(new Invoice() {
                 Id = 1000,
                 Type = Invoice.Types.A.ToString()
-            });
+                });
 
             this._db.Add(new Invoice() {
                 Id = 1002,
                 Type = Invoice.Types.B.ToString()
-            });
+                });
 
             Invoice invoice3 = new Invoice() {
                 Id = 1003, Type = Invoice.Types.A.ToString()
-            };
+                };
 
             invoice3.AddDetail(new InvoiceDetail() { Id = 1, InvoiceId = 3, Amount = 22, Description = "Venta varias", UnitPrice = 98.1 });
 
             this._db.Add(invoice3);
 
-            this._db.Add(new Invoice() {
-                Id = 1004,
-                Type = Invoice.Types.A.ToString()
-            });
+           
 
 
             Invoice invoice5 = new Invoice() {
-                Id = 1003, Type = Invoice.Types.A.ToString()
-            };
+                Id = 4, Type = Invoice.Types.A.ToString()
+                };
 
-            invoice5.AddDetail(new InvoiceDetail() { Id = 1001, InvoiceId = 5, Amount = 22, Description = "Venta varias", UnitPrice = 98.1 });
-            invoice5.AddDetail(new InvoiceDetail() { Id = 1002, InvoiceId = 5, Description = "Venta insumos varios", Amount = 14, UnitPrice = 4.33 });
-            invoice5.AddDetail(new InvoiceDetail() { Id = 1003, InvoiceId = 5, Description = "Venta insumos tóner", Amount = 5, UnitPrice = 87 });
+            invoice5.AddDetail(new InvoiceDetail() { Id = 1001, InvoiceId = 4, Amount = 22, Description = "Venta varias", UnitPrice = 98.1 });
+            invoice5.AddDetail(new InvoiceDetail() { Id = 1002, InvoiceId = 4, Description = "Venta insumos varios", Amount = 14, UnitPrice = 4.33 });
+            invoice5.AddDetail(new InvoiceDetail() { Id = 1003, InvoiceId = 4, Description = "Venta insumos tóner", Amount = 5, UnitPrice = 87 });
 
             this._db.Add(invoice5);
 
-        }
+              Invoice invoice6 = new Invoice() {
+                Id = 1004, Type = Invoice.Types.A.ToString()
+                };
+
+            invoice6.AddDetail(new InvoiceDetail() { Id = 1001, InvoiceId = 1004, Amount = 22, Description = "Venta varias", UnitPrice = 98.1 });
+            invoice6.AddDetail(new InvoiceDetail() { Id = 1002, InvoiceId = 1004, Description = "Venta insumos varios", Amount = 14, UnitPrice = 4.33 });
+            invoice6.AddDetail(new InvoiceDetail() { Id = 1003, InvoiceId = 1004, Description = "Venta insumos tóner", Amount = 5, UnitPrice = 87 });
+
+            this._db.Add(invoice6);
+            }
+
+
+        internal void Update(long id, IList<InvoiceDetail> detail)
+            {
+            throw new NotImplementedException();
+            }
 
         public void Delete(Invoice invoice) {
 
@@ -115,6 +130,14 @@ namespace ninja.model.Mock {
 
             foreach(InvoiceDetail item in detail)
                 this.GetById(id).AddDetail(item);
+
+        }
+
+        public void UpdateDetail(long id, IList<InvoiceDetail> detail) {
+             this.DeleteDetail(id);
+             this.AddDetail(id,detail);
+             
+
 
         }
 

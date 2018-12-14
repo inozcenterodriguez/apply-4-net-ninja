@@ -1,0 +1,51 @@
+﻿@using ninja.Models
+@model  BusquedaInvoice
+
+@{
+
+
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1> New  </h1>
+ 
+
+<br />
+@{
+
+    using (Html.BeginForm("New", "Invoice", FormMethod.Post, new { id = "FormNew" })) {
+<div class="row">
+
+    <div class="col-md-12">
+
+        @Html.TextBox("Id", ""  )
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.TextBox("Type", "" )
+    </div>
+
+</div>
+
+        <input type="submit" />
+        }
+
+    <br />
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
