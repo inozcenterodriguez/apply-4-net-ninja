@@ -31,8 +31,10 @@
             <td>@item.Type</td>
             <td>
                 @Html.ActionLink("Detail", "Detail", new { id = item.Id }, new { @class = "buttonx" })
-                
-                
+                @Html.ActionLink("Update", "Update", new { id = item.Id }, new { @class = "buttonx" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "buttonx" })
+
+
             </td>
 
         </tr>

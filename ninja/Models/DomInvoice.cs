@@ -8,6 +8,19 @@ using ninja.model.Entity;
 namespace ninja.Models
     {
 
+    public class ListaInvoiceDetail
+    {
+      public   List<BusquedaInvoiceDetail> ListaBusquedaInvoiceDetail { get; set; }
+
+
+     public    ListaInvoiceDetail()
+        {
+            this.ListaBusquedaInvoiceDetail = new List<BusquedaInvoiceDetail>();
+        }
+    }
+
+
+
     public class BusquedaInvoice
         {
         public long Id { get; set; }
@@ -53,7 +66,7 @@ namespace ninja.Models
 
             }
 
-        internal IList<BusquedaInvoiceDetail> Adapter(IList<InvoiceDetail> oListInvoiceDetail)
+        public  List<BusquedaInvoiceDetail> AdapterInverse(List<InvoiceDetail> oListInvoiceDetail)
             {
                 var result = new List<BusquedaInvoiceDetail>();
                 foreach( InvoiceDetail item in oListInvoiceDetail)

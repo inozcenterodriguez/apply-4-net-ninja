@@ -1,0 +1,87 @@
+﻿@using ninja.Models
+@model ninja.Models.ListaInvoiceDetail
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+
+
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Description</th>
+                <th>UnitPrice</th>
+                <th>Amount</th>
+                <th>TotalPrice</th>
+                <th>Taxes</th>
+                <th>TotalPriceWithTaxes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+
+                foreach (BusquedaInvoiceDetail item in Model.ListaBusquedaInvoiceDetail)
+                {
+                    <tr>
+
+                        <td>@Html.TextBox("Id", item.Id)  </td>
+                        <td>@Html.TextBox("Description", item.Description)  </td>
+                        <td>@Html.TextBox("UnitPrice", item.UnitPrice)  </td>
+                        <td>@Html.TextBox("Amount", item.Amount)  </td>
+                        <td>@Html.TextBox("TotalPrice", item.TotalPrice.ToString())  </td>
+                        <td>@Html.TextBox("Taxes", "dddd")  </td>
+                        <td>@Html.TextBox("TotalPriceWithTaxes", item.TotalPriceWithTaxes)  </td>
+                        <td>  <input type="button" value="Delete Detail" class="btn btn-default" /></td>
+
+
+                    </tr>
+
+
+                }
+
+            }
+
+
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <div class="  col-md-10">
+                    <input  class ="active" type="button" value="Add New " class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <div class="  col-md-10">
+                    @Html.Action("AddRow","Invoice",Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+ 
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
