@@ -33,13 +33,15 @@
             </tr>
         </thead>
         <tbody>
+            
             @{
-
+    
+ 
                 foreach (BusquedaInvoiceDetail item in Model.ListaBusquedaInvoiceDetail)
                 {
                     <tr>
 
-                        <td>@Html.TextBox("Id", item.Id)  </td>
+                        <td>@Html.TextBox("Id", item.Id,"[@i].FirstName")  </td>
                         <td>@Html.TextBox("Description", item.Description)  </td>
                         <td>@Html.TextBox("UnitPrice", item.UnitPrice)  </td>
                         <td>@Html.TextBox("Amount", item.Amount)  </td>
@@ -73,7 +75,8 @@
         <div class="col-lg-3">
             <div class="form-group">
                 <div class="  col-md-10">
-                    @Html.Action("AddRow","Invoice",Model)
+                    
+                    @Html.sub("AddRow","Invoice" Lista)
                 </div>
             </div>
         </div>

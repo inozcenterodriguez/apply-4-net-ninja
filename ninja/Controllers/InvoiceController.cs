@@ -45,9 +45,9 @@ namespace ninja.Controllers
           return View(result);
         }
 
-        public ActionResult AddRow(ListaInvoiceDetail oListaInvoiceDetail)
+        public ActionResult AddRow(  BusquedaInvoiceDetail  oListaInvoiceDetail)
         {
-            oListaInvoiceDetail.ListaBusquedaInvoiceDetail.Add(new BusquedaInvoiceDetail()
+            oListaInvoiceDetail.Add(new BusquedaInvoiceDetail()
             {
                  Amount = 1,
                   Description = "",
